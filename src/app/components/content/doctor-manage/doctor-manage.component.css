@@ -1,0 +1,50 @@
+.box-header {
+  margin-bottom: 5px;
+}
+
+.box-body {
+  padding: 10px 0;
+}
+
+.table-action {
+  white-space: nowrap;
+  min-width: 80px;
+  max-width: 100px;
+}
+
+.flex {
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center
+}
+
+.list-group {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.list-group-item {
+  cursor: move;
+  margin-top: 5px;
+}
+
+.select {
+  background-color: #ccc;
+}
+
+.ex-over {
+  opacity: 0.4;
+}
+
+.ex-moved {
+  background-color: #fff;
+}
+
+.box-list-title {
+  margin: 2px auto;
+  height: 8%;
+}

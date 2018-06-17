@@ -1,0 +1,11 @@
+.box-header{
+    margin-bottom: 10px;
+}
+.box-body{
+    padding:10px 0;
+}
+.table-action{
+    white-space: nowrap;
+    min-width: 80px;
+    max-width: 100px;
+}

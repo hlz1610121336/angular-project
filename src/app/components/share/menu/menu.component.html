@@ -1,0 +1,64 @@
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+
+    <!-- Sidebar user panel (optional) -->
+    <div class="user-panel">
+      <div class="pull-left image">
+        <img src="../assets/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+      </div>
+      <div class="pull-left info">
+        <p *ngIf="userInfo">{{userInfo.Name}}</p>
+        <!-- Status -->
+        <a href="javascript:void(0)"><i class="fa fa-circle text-success"></i> Online</a>
+      </div>
+    </div>
+
+    <!-- search form (Optional) -->
+    <form action="#" method="get" class="sidebar-form">
+      <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder="Search...">
+        <span class="input-group-btn">
+              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+              </button>
+            </span>
+      </div>
+    </form>
+    <!-- /.search form -->
+
+    <!-- Sidebar Menu -->
+    <ul class="sidebar-menu" data-widget="tree">
+      <li class="header">HEADER</li>
+      <!-- Optionally, you can add icons to the links -->
+      <li class="treeview menu-open" routerLinkActive="active">
+          <a href="javascript:void(0)" (click)="menuOpen($event)" id="menuopen"><i class="fa fa-link"  ></i> <span>系统配置</span>
+          <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+        </a>
+        <ul class="treeview-menu">
+          <li routerLinkActive="active" *ngIf="perssionMenu['RoleManage']">
+            <a routerLink='roleManage'><i class="fa fa-link"></i><span>角色管理</span></a>
+          </li>
+        </ul>
+      </li>
+      <li routerLinkActive="active" *ngIf="perssionMenu['DoctorManage']">
+        <a routerLink='doctorManage'><i class="fa fa-link"></i> <span>医生管理</span></a></li>
+      <li routerLinkActive="active" *ngIf="perssionMenu['药品管理']">
+        <a routerLink='drugManage'><i class="fa fa-link"></i> <span>药品管理</span></a></li>
+      <li routerLinkActive="active" *ngIf="perssionMenu['器械管理']">
+        <a routerLink='applianceManage'><i class="fa fa-link"></i> <span>器械管理</span></a></li>
+      <li routerLinkActive="active" *ngIf="perssionMenu['OrderManage']">
+        <a routerLink='indentManage'><i class="fa fa-link"></i> <span>订单管理</span></a></li>
+      <li routerLinkActive="active" *ngIf="perssionMenu['病例管理']">
+        <a routerLink='caseManage'><i class="fa fa-link"></i> <span>病例管理</span></a></li>
+      <li routerLinkActive="active" *ngIf="perssionMenu['预约管理']">
+        <a routerLink='appointmentManage'><i class="fa fa-link"></i><span>预约管理</span></a>
+      </li>
+    </ul>
+    <!-- /.sidebar-menu -->
+  </section>
+  <!-- /.sidebar -->
+</aside>

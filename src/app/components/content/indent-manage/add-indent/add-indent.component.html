@@ -1,0 +1,162 @@
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper" >
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        订单管理
+        <small>添加订单信息</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a routerLink="/index"><i class="fa fa-dashboard"></i> 首页</a></li>
+        <li><a routerLink="/index/indentManage"><i class="fa fa-dashboard"></i> 订单管理</a></li>
+        <li class="active">新建</li>
+      </ol>
+     
+    </section>
+
+    <!-- Main content -->
+    <section class="content container-fluid" >
+
+      <div class="row">
+        <div class="col-md-12">
+          <form class="form-horizontal">
+            <div class="box-body">
+              <div class="box box-info">
+                <div class="box-header with-border">
+                  <!-- <h3 class="box-title">Horizontal Form</h3> -->
+                </div>
+                <div class="row">
+                  <div class="form-group col-sm-6">
+                    <label for="" class="col-sm-3 control-label">客户姓名</label>
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control input-sm" [(ngModel)]='createData.CustomerName' name="CustomerName" placeholder="客户姓名">
+                    </div>
+                  </div>
+                  <div class="form-group col-sm-6">
+                    <label for="" class="col-sm-3 control-label">客户手机号</label>
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control input-sm" [(ngModel)]='createData.CustomerCellPhone' name="CustomerCellPhone" placeholder="客户手机号">
+                    </div>
+                  </div>
+                  </div>
+                  <div class="borderbox"></div>
+                  <div class="row row-btn">
+                      <div class="form-group col-sm-6">
+                          <div class="col-sm-6">
+                              <button class="btn btn-info" data-toggle="modal" data-target="#roles-modal">添加病例</button>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="row row-padding">
+                      <table class="table table-bordered table-hover" *ngIf="createData.MedicalRecords">
+                        <thead>
+                          <tr >
+                            <th class="text-center">病人名字</th>
+                            <th class="text-center">病人手机号</th>
+                            <th class="text-center">病情描述</th>
+                            <th class="text-center">消耗品</th>
+                            <th class="text-center">备注</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of createData.MedicalRecords">
+                            <td>{{item.Patient}}</td>
+                            <td>{{item.PatientPhone}}</td>
+                            <td>{{item.PatientDescribe}}</td>
+                            <td>{{item.Medicine}}</td>
+                            <td>{{item.Remark}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  </div>
+                  <div class="row row-padding">
+                      <div class="form-group col-sm-6">
+                          <label for="" class="col-sm-3 control-label">总金额</label>
+                          <div class="col-sm-6">
+                            <input type="text" class="form-control input-sm inpute-code" [(ngModel)]='createData.TotalAmount' name="TotalAmount" placeholder="总金额">
+                          </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="" class="col-sm-3 control-label">支付方式</label>
+                            <div class="col-sm-6 checkbox">
+                              <input type="checkbox">支付宝&ensp;&ensp;&ensp;
+                              <input type="checkbox">微信&ensp;&ensp;&ensp;
+                              <input type="checkbox">现金&ensp;&ensp;&ensp;
+                              <input type="checkbox">赊欠&ensp;
+                            </div>
+                          </div>
+                  </div>
+                  <div class="row row-padding">
+                    <div class="form-group col-sm-12 textarea-parent">
+                        <!-- <label for="" class="col-sm-3 control-label text-left" style="text-align:left">备注:</label> -->
+                        <div class="col-sm-12 textarea-parent">
+                            <textarea class="textarea" placeholder="填写备注信息······"></textarea>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="box-footer">
+                    <button  class="btn btn-sm btn-info pull-right" (click) ="onSave()" ><i class="fa fa-arrow-circle-up 
+                      "></i>&ensp;保存</button>
+                  </div>
+                </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+   <!-- 添加病例 -->
+<div class="modal fade" id="roles-modal">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span></button>
+		  <h4 class="modal-title">添加病例</h4>
+		</div>
+		<div class="modal-body text-right" style="height:300px">
+      <form action="form-horizontal">
+          <div class="form-group col-sm-12">
+              <label for="" class="col-sm-3 control-label label-line-height">病人姓名</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control input-sm " [(ngModel)]='MedicalRecords.Patient' name="Patient" placeholder="病人姓名">
+              </div>
+            </div>
+            <div class="form-group col-sm-12">
+              <label for="" class="col-sm-3 control-label label-line-height">病人手机号</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control input-sm " [(ngModel)]='MedicalRecords.PatientPhone' name="PatientPhone" placeholder="病人手机号">
+              </div>
+            </div>
+            <div class="form-group col-sm-12">
+              <label for="" class="col-sm-3 control-label label-line-height">病情描述</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control input-sm " [(ngModel)]='MedicalRecords.PatientDescribe' name="PatientDescribe" placeholder="病情描述">
+              </div>
+            </div>
+            <div class="form-group col-sm-12">
+              <label for="" class="col-sm-3 control-label label-line-height">使用的药物</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control input-sm " [(ngModel)]='MedicalRecords.Medicine' name="Medicine" placeholder="使用的药物">
+              </div>
+            </div>
+            <div class="form-group col-sm-12">
+                <label for="" class="col-sm-3 control-label label-line-height">备注</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control input-sm " [(ngModel)]='MedicalRecords.Remark' name="Remark" placeholder="备注">
+                </div>
+            </div>
+      </form>
+		 </div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+		  <button type="button" class="btn btn-primary" (click) = "addMedicalRecords()" data-dismiss="modal" >保存</button>
+		</div>
+	  </div>
+	  <!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
